@@ -1,0 +1,340 @@
+<sdf version='1.7'>
+  <model name='sam_bot'>
+    <link name='base_link'>
+      <inertial>
+        <pose>0.007054 0 0.013988 1.5708 -0 1.5708</pose>
+        <mass>1.166</mass>
+        <inertia>
+          <ixx>0.0227667</ixx>
+          <ixy>-5.61451e-20</ixy>
+          <ixz>-4.69632e-19</ixz>
+          <iyy>0.0263751</iyy>
+          <iyz>-0.000198199</iyz>
+          <izz>0.0144172</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.42 0.31 0.18</size>
+          </box>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__camera_link_collision_1'>
+        <pose>0.215 0 0.05 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.015 0.13 0.022</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__front_caster_collision_2'>
+        <pose>0.14 0 -0.09 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.06</radius>
+          </sphere>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__imu_link_collision_3'>
+        <pose>0 0 0.01 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.1</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__lidar_link_collision_4'>
+        <pose>0 0 0.12 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.055</length>
+            <radius>0.0508</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.42 0.31 0.18</size>
+          </box>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__camera_link_visual_1'>
+        <pose>0.215 0 0.05 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.015 0.13 0.022</size>
+          </box>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__front_caster_visual_2'>
+        <pose>0.14 0 -0.09 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.06</radius>
+          </sphere>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__imu_link_visual_3'>
+        <pose>0 0 0.01 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.1</size>
+          </box>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__lidar_link_visual_4'>
+        <pose>0 0 0.12 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.055</length>
+            <radius>0.0508</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <sensor name='robot_cam' type='camera'>
+        <camera>
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+            <width>320</width>
+            <height>240</height>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <visualize>1</visualize>
+        <topic>robot_cam</topic>
+        <enable_metrics>1</enable_metrics>
+        <pose>0.215 0 0.05 0 -0 0</pose>
+      </sensor>
+      <sensor name='imu_sensor' type='imu'>
+        <plugin name='ignition::gazebo::systems::Imu' filename='ignition-gazebo-imu-system'/>
+        <topic>imu</topic>
+        <always_on>1</always_on>
+        <update_rate>100</update_rate>
+        <visualize>1</visualize>
+        <imu>
+          <angular_velocity>
+            <x>
+              <noise type='gaussian'>
+                <mean>0</mean>
+                <stddev>0.0002</stddev>
+                <bias_mean>7.5e-06</bias_mean>
+                <bias_stddev>8e-07</bias_stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type='gaussian'>
+                <mean>0</mean>
+                <stddev>0.0002</stddev>
+                <bias_mean>7.5e-06</bias_mean>
+                <bias_stddev>8e-07</bias_stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type='gaussian'>
+                <mean>0</mean>
+                <stddev>0.0002</stddev>
+                <bias_mean>7.5e-06</bias_mean>
+                <bias_stddev>8e-07</bias_stddev>
+              </noise>
+            </z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x>
+              <noise type='gaussian'>
+                <mean>0</mean>
+                <stddev>0.017</stddev>
+                <bias_mean>0.1</bias_mean>
+                <bias_stddev>0.001</bias_stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type='gaussian'>
+                <mean>0</mean>
+                <stddev>0.017</stddev>
+                <bias_mean>0.1</bias_mean>
+                <bias_stddev>0.001</bias_stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type='gaussian'>
+                <mean>0</mean>
+                <stddev>0.017</stddev>
+                <bias_mean>0.1</bias_mean>
+                <bias_stddev>0.001</bias_stddev>
+              </noise>
+            </z>
+          </linear_acceleration>
+        </imu>
+        <pose>0 0 0.01 0 -0 0</pose>
+        <ignition_frame_id>imu_link</ignition_frame_id>
+      </sensor>
+      <sensor name='lidar' type='gpu_lidar'>
+        <topic>scan</topic>
+        <always_on>1</always_on>
+        <visualize>1</visualize>
+        <update_rate>5</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>360</samples>
+              <resolution>1</resolution>
+              <min_angle>0</min_angle>
+              <max_angle>6.28</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.12</min>
+            <max>3.5</max>
+            <resolution>0.015</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </ray>
+        <pose>0 0 0.12 0 -0 0</pose>
+        <ignition_frame_id>lidar_link</ignition_frame_id>
+      </sensor>
+    </link>
+    <joint name='drivewhl_l_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.12 0.18 -0.05 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>drivewhl_l_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.2</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='drivewhl_l_link'>
+      <pose relative_to='drivewhl_l_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <mass>2.5</mass>
+        <inertia>
+          <ixx>0.00658333</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00658333</iyy>
+          <iyz>0</iyz>
+          <izz>0.0125</izz>
+        </inertia>
+      </inertial>
+      <collision name='drivewhl_l_link_collision'>
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.04</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='drivewhl_l_link_visual'>
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.04</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='drivewhl_r_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.12 -0.18 -0.05 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>drivewhl_r_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.2</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='drivewhl_r_link'>
+      <pose relative_to='drivewhl_r_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <mass>2.5</mass>
+        <inertia>
+          <ixx>0.00658333</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00658333</iyy>
+          <iyz>0</iyz>
+          <izz>0.0125</izz>
+        </inertia>
+      </inertial>
+      <collision name='drivewhl_r_link_collision'>
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.04</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='drivewhl_r_link_visual'>
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.04</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <static>0</static>
+    <plugin name='ign_ros2_control::IgnitionROS2ControlPlugin' filename='ign_ros2_control-system'>
+      <parameters>/home/kfcnef/AESIR/simulation_rescue_major/src/install/robot_description/share/robot_description/config/diff_drive_controller_velocity.yaml</parameters>
+    </plugin>
+  </model>
+</sdf>
